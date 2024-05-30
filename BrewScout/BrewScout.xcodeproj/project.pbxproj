@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FB0F4EE2C06559700DCCD6B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB0F4ED2C06559700DCCD6B /* ProfileViewController.swift */; };
+		2FB0F4F02C0655DE00DCCD6B /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB0F4EF2C0655DE00DCCD6B /* FavoritesViewController.swift */; };
+		2FB0F4F12C06708400DCCD6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34FB2AD32BFD821E00DDA310 /* Main.storyboard */; };
 		34FB2ACE2BFD821E00DDA310 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FB2ACD2BFD821E00DDA310 /* AppDelegate.swift */; };
 		34FB2AD02BFD821E00DDA310 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FB2ACF2BFD821E00DDA310 /* SceneDelegate.swift */; };
 		34FB2AD22BFD821E00DDA310 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FB2AD12BFD821E00DDA310 /* ViewController.swift */; };
@@ -36,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2FB0F4ED2C06559700DCCD6B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		2FB0F4EF2C0655DE00DCCD6B /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		34FB2ACA2BFD821E00DDA310 /* BrewScout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrewScout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34FB2ACD2BFD821E00DDA310 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34FB2ACF2BFD821E00DDA310 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,7 +106,9 @@
 			children = (
 				34FB2ACD2BFD821E00DDA310 /* AppDelegate.swift */,
 				34FB2ACF2BFD821E00DDA310 /* SceneDelegate.swift */,
+				2FB0F4ED2C06559700DCCD6B /* ProfileViewController.swift */,
 				34FB2AD12BFD821E00DDA310 /* ViewController.swift */,
+				2FB0F4EF2C0655DE00DCCD6B /* FavoritesViewController.swift */,
 				34FB2AD32BFD821E00DDA310 /* Main.storyboard */,
 				34FB2AD62BFD822100DDA310 /* Assets.xcassets */,
 				34FB2AD82BFD822100DDA310 /* LaunchScreen.storyboard */,
@@ -234,6 +241,7 @@
 				34FB2AD72BFD822100DDA310 /* Assets.xcassets in Resources */,
 				34FB2ADA2BFD822100DDA310 /* Base in Resources */,
 				34FB2AD52BFD821E00DDA310 /* Base in Resources */,
+				2FB0F4F12C06708400DCCD6B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +268,8 @@
 			files = (
 				34FB2AD22BFD821E00DDA310 /* ViewController.swift in Sources */,
 				34FB2ACE2BFD821E00DDA310 /* AppDelegate.swift in Sources */,
+				2FB0F4EE2C06559700DCCD6B /* ProfileViewController.swift in Sources */,
+				2FB0F4F02C0655DE00DCCD6B /* FavoritesViewController.swift in Sources */,
 				34FB2AD02BFD821E00DDA310 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,7 +452,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HL7N9W6PVU;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BrewScout/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -470,7 +480,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HL7N9W6PVU;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BrewScout/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
