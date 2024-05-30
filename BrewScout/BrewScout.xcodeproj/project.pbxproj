@@ -10,6 +10,10 @@
 		2FB0F4EE2C06559700DCCD6B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB0F4ED2C06559700DCCD6B /* ProfileViewController.swift */; };
 		2FB0F4F02C0655DE00DCCD6B /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB0F4EF2C0655DE00DCCD6B /* FavoritesViewController.swift */; };
 		2FB0F4F12C06708400DCCD6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34FB2AD32BFD821E00DDA310 /* Main.storyboard */; };
+		341F15ED2C09477D008F7781 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 341F15EC2C09477D008F7781 /* FirebaseAuth */; };
+		341F15F02C0947E9008F7781 /* GooglePlaces in Frameworks */ = {isa = PBXBuildFile; productRef = 341F15EF2C0947E9008F7781 /* GooglePlaces */; };
+		341F15F22C094876008F7781 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341F15F12C094876008F7781 /* LoginViewController.swift */; };
+		341F15F42C0948DC008F7781 /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341F15F32C0948DC008F7781 /* PlaceDetailViewController.swift */; };
 		34FB2ACE2BFD821E00DDA310 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FB2ACD2BFD821E00DDA310 /* AppDelegate.swift */; };
 		34FB2AD02BFD821E00DDA310 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FB2ACF2BFD821E00DDA310 /* SceneDelegate.swift */; };
 		34FB2AD22BFD821E00DDA310 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FB2AD12BFD821E00DDA310 /* ViewController.swift */; };
@@ -41,6 +45,8 @@
 /* Begin PBXFileReference section */
 		2FB0F4ED2C06559700DCCD6B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2FB0F4EF2C0655DE00DCCD6B /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		341F15F12C094876008F7781 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		341F15F32C0948DC008F7781 /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
 		34FB2ACA2BFD821E00DDA310 /* BrewScout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrewScout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34FB2ACD2BFD821E00DDA310 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34FB2ACF2BFD821E00DDA310 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +67,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				341F15ED2C09477D008F7781 /* FirebaseAuth in Frameworks */,
+				341F15F02C0947E9008F7781 /* GooglePlaces in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,8 +114,10 @@
 			children = (
 				34FB2ACD2BFD821E00DDA310 /* AppDelegate.swift */,
 				34FB2ACF2BFD821E00DDA310 /* SceneDelegate.swift */,
+				341F15F12C094876008F7781 /* LoginViewController.swift */,
 				2FB0F4ED2C06559700DCCD6B /* ProfileViewController.swift */,
 				34FB2AD12BFD821E00DDA310 /* ViewController.swift */,
+				341F15F32C0948DC008F7781 /* PlaceDetailViewController.swift */,
 				2FB0F4EF2C0655DE00DCCD6B /* FavoritesViewController.swift */,
 				34FB2AD32BFD821E00DDA310 /* Main.storyboard */,
 				34FB2AD62BFD822100DDA310 /* Assets.xcassets */,
@@ -150,6 +160,10 @@
 			dependencies = (
 			);
 			name = BrewScout;
+			packageProductDependencies = (
+				341F15EC2C09477D008F7781 /* FirebaseAuth */,
+				341F15EF2C0947E9008F7781 /* GooglePlaces */,
+			);
 			productName = BrewScout;
 			productReference = 34FB2ACA2BFD821E00DDA310 /* BrewScout.app */;
 			productType = "com.apple.product-type.application";
@@ -222,6 +236,10 @@
 				Base,
 			);
 			mainGroup = 34FB2AC12BFD821E00DDA310;
+			packageReferences = (
+				341F15EB2C09477D008F7781 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				341F15EE2C0947E9008F7781 /* XCRemoteSwiftPackageReference "ios-places-sdk" */,
+			);
 			productRefGroup = 34FB2ACB2BFD821E00DDA310 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -266,7 +284,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				341F15F22C094876008F7781 /* LoginViewController.swift in Sources */,
 				34FB2AD22BFD821E00DDA310 /* ViewController.swift in Sources */,
+				341F15F42C0948DC008F7781 /* PlaceDetailViewController.swift in Sources */,
 				34FB2ACE2BFD821E00DDA310 /* AppDelegate.swift in Sources */,
 				2FB0F4EE2C06559700DCCD6B /* ProfileViewController.swift in Sources */,
 				2FB0F4F02C0655DE00DCCD6B /* FavoritesViewController.swift in Sources */,
@@ -465,6 +485,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.uw.ischool.qbaebler.BrewScout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -493,6 +514,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.uw.ischool.qbaebler.BrewScout;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -617,6 +639,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		341F15EB2C09477D008F7781 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.27.0;
+			};
+		};
+		341F15EE2C0947E9008F7781 /* XCRemoteSwiftPackageReference "ios-places-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googlemaps/ios-places-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		341F15EC2C09477D008F7781 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 341F15EB2C09477D008F7781 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		341F15EF2C0947E9008F7781 /* GooglePlaces */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 341F15EE2C0947E9008F7781 /* XCRemoteSwiftPackageReference "ios-places-sdk" */;
+			productName = GooglePlaces;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 34FB2AC22BFD821E00DDA310 /* Project object */;
 }
