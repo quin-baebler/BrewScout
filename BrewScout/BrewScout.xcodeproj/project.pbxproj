@@ -23,6 +23,7 @@
 		34FB2AE52BFD822200DDA310 /* BrewScoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FB2AE42BFD822200DDA310 /* BrewScoutTests.swift */; };
 		34FB2AEF2BFD822200DDA310 /* BrewScoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FB2AEE2BFD822200DDA310 /* BrewScoutUITests.swift */; };
 		34FB2AF12BFD822200DDA310 /* BrewScoutUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FB2AF02BFD822200DDA310 /* BrewScoutUITestsLaunchTests.swift */; };
+		9F95A18E2C0954B7005B2D2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F95A18D2C0954B7005B2D2C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		34FB2AEA2BFD822200DDA310 /* BrewScoutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrewScoutUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		34FB2AEE2BFD822200DDA310 /* BrewScoutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewScoutUITests.swift; sourceTree = "<group>"; };
 		34FB2AF02BFD822200DDA310 /* BrewScoutUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewScoutUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9F95A18D2C0954B7005B2D2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 		34FB2ACC2BFD821E00DDA310 /* BrewScout */ = {
 			isa = PBXGroup;
 			children = (
+				9F95A18D2C0954B7005B2D2C /* GoogleService-Info.plist */,
 				34FB2ACD2BFD821E00DDA310 /* AppDelegate.swift */,
 				34FB2ACF2BFD821E00DDA310 /* SceneDelegate.swift */,
 				341F15F12C094876008F7781 /* LoginViewController.swift */,
@@ -258,6 +261,7 @@
 			files = (
 				34FB2AD72BFD822100DDA310 /* Assets.xcassets in Resources */,
 				34FB2ADA2BFD822100DDA310 /* Base in Resources */,
+				9F95A18E2C0954B7005B2D2C /* GoogleService-Info.plist in Resources */,
 				34FB2AD52BFD821E00DDA310 /* Base in Resources */,
 				2FB0F4F12C06708400DCCD6B /* Main.storyboard in Resources */,
 			);
