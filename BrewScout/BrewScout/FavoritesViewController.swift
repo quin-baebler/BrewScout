@@ -39,9 +39,9 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     var liked = true
     
     //click to like or unlike the caffe
-    @IBAction func clickHeartButton(_ sender: Any) {
+    /*@IBAction func clickHeartButton(_ sender: Any) {
         likeIt(<#T##tableView: UITableView##UITableView#>, cellForRowAt: <#T##IndexPath#>)
-    }
+    }*/
    
     //likes and unlikes the caffes
     //updates the list of liked cafes
@@ -57,7 +57,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         } else { //changes heart to full
             cell.filledHeartButton.setImage(UIImage(named: "heart.fill"), for: .normal)
             //add to favorites list
-            cafeListFaves.append(<#T##newElement: (String, String, String)##(String, String, String)#>)
+            //cafeListFaves.append(<#T##newElement: (String, String, String)##(String, String, String)#>)
             liked = true
         }
     }
