@@ -23,6 +23,7 @@
 		34FB2AE52BFD822200DDA310 /* BrewScoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FB2AE42BFD822200DDA310 /* BrewScoutTests.swift */; };
 		34FB2AEF2BFD822200DDA310 /* BrewScoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FB2AEE2BFD822200DDA310 /* BrewScoutUITests.swift */; };
 		34FB2AF12BFD822200DDA310 /* BrewScoutUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FB2AF02BFD822200DDA310 /* BrewScoutUITestsLaunchTests.swift */; };
+		88995CB72C0C416B00E74D73 /* ShopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88995CB62C0C416B00E74D73 /* ShopListViewController.swift */; };
 		9F95A18E2C0954B7005B2D2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F95A18D2C0954B7005B2D2C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		34FB2AEA2BFD822200DDA310 /* BrewScoutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrewScoutUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		34FB2AEE2BFD822200DDA310 /* BrewScoutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewScoutUITests.swift; sourceTree = "<group>"; };
 		34FB2AF02BFD822200DDA310 /* BrewScoutUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewScoutUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		88995CB62C0C416B00E74D73 /* ShopListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListViewController.swift; sourceTree = "<group>"; };
 		9F95A18D2C0954B7005B2D2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,6 +125,7 @@
 				341F15F32C0948DC008F7781 /* PlaceDetailViewController.swift */,
 				2FB0F4EF2C0655DE00DCCD6B /* FavoritesViewController.swift */,
 				34FB2AD32BFD821E00DDA310 /* Main.storyboard */,
+				88995CB62C0C416B00E74D73 /* ShopListViewController.swift */,
 				34FB2AD62BFD822100DDA310 /* Assets.xcassets */,
 				34FB2AD82BFD822100DDA310 /* LaunchScreen.storyboard */,
 				34FB2ADB2BFD822100DDA310 /* Info.plist */,
@@ -292,6 +295,7 @@
 				34FB2AD22BFD821E00DDA310 /* ViewController.swift in Sources */,
 				341F15F42C0948DC008F7781 /* PlaceDetailViewController.swift in Sources */,
 				34FB2ACE2BFD821E00DDA310 /* AppDelegate.swift in Sources */,
+				88995CB72C0C416B00E74D73 /* ShopListViewController.swift in Sources */,
 				2FB0F4EE2C06559700DCCD6B /* ProfileViewController.swift in Sources */,
 				2FB0F4F02C0655DE00DCCD6B /* FavoritesViewController.swift in Sources */,
 				34FB2AD02BFD821E00DDA310 /* SceneDelegate.swift in Sources */,
