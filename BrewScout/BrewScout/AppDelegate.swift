@@ -14,13 +14,13 @@ import FirebaseAuth
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let googlePlacesAPIKey = "AIzaSyDMfVpurbF4MJ2ZQnhbUPiU03KICxQ_uug"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         FirebaseApp.configure()
         
-    
+        
         GMSPlacesClient.provideAPIKey("AIzaSyDMfVpurbF4MJ2ZQnhbUPiU03KICxQ_uug")
         return true
     }

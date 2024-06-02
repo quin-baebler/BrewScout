@@ -12,6 +12,8 @@ import GooglePlaces
 
 class LoginViewController : UIViewController {
     var isHoursVisible = false
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var password: UITextField!
   
   
 
@@ -25,9 +27,8 @@ class LoginViewController : UIViewController {
     
 
     @IBAction func LoginButtonTapped(_ sender: UIButton) {
-        let email = "test@example.com"
-        let password = "password123"
-        addAccount(email: email, password: password)
+        
+        addAccount(email: email.text!, password: password.text!)
     }
     
     func addAccount(email: String, password: String) {
