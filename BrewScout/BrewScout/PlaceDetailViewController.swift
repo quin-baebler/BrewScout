@@ -16,6 +16,7 @@ import GooglePlaces
 
 class PlaceDetailViewController: UIViewController {
     var isHoursVisible = false
+    var placeID: String?
   
     @IBOutlet weak var toggleHoursButton: UIButton!
     
@@ -34,7 +35,7 @@ class PlaceDetailViewController: UIViewController {
             @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var ratingsLabel: UILabel!
     @IBOutlet weak var reviewsTextView: UITextView!
-            @IBOutlet weak var getDetailsButton: UIButton!
+         
 
            
     @IBAction func toggleHoursTapped(_ sender: UIButton) {
@@ -54,7 +55,8 @@ class PlaceDetailViewController: UIViewController {
 
             func fetchPlaceDetails() {
                 let placesClient = GMSPlacesClient.shared()
-                let placeID = "ChIJwZGQzPQUkFQRRhd8D82mN_k" // Replace with the actual Place ID
+                guard let placeID = placeID else { return }
+                //let placeID = "ChIJwZGQzPQUkFQRRhd8D82mN_k" // Replace with the actual Place ID
 
                 placesClient.fetchPlace(fromPlaceID: placeID, placeFields: [.name, .formattedAddress, .openingHours, .rating, .photos, .coordinate,], sessionToken: nil, callback: { (place, error) in
                     if let error = error {
