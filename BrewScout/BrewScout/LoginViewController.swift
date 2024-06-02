@@ -27,11 +27,17 @@ class LoginViewController : UIViewController {
     
 
     @IBAction func LoginButtonTapped(_ sender: UIButton) {
+            guard let emailText = email.text, !emailText.isEmpty,
+                  let passwordText = password.text, !passwordText.isEmpty else {
+                // Handle empty email or password case
+                print("Email or password field is empty.")
+                return
+            }
+
+            addAccount(email: emailText, password: passwordText)
+        }
         
-        addAccount(email: email.text!, password: password.text!)
-    }
-    
-    func addAccount(email: String, password: String) {
+        func addAccount(email: String, password: String) {
             Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
                 guard let strongSelf = self else {
                     print("Self is nil.")
@@ -40,13 +46,15 @@ class LoginViewController : UIViewController {
                 
                 if let error = error {
                     print("Error signing in: \(error.localizedDescription)")
+                    // Optionally, show an alert to the user here
                 } else if let authResult = authResult {
                     print("Successfully signed in! User: \(authResult.user.email ?? "No email")")
+                    // Perform segue to ShopListViewController
+                    strongSelf.performSegue(withIdentifier: "showShopList", sender: strongSelf)
                 } else {
                     print("Unknown error occurred.")
                 }
             }
-
         }
 
     

@@ -17,14 +17,17 @@ import GooglePlaces
 class PlaceDetailViewController: UIViewController {
     var isHoursVisible = false
     var placeID: String?
-  
-    @IBOutlet weak var toggleHoursButton: UIButton!
+    var hoursText: String?
+    var reviewsText: NSAttributedString?
+    
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let placesClient = GMSPlacesClient.shared()
-            reviewsTextView.isHidden = true
+           // reviewsTextView.isHidden = true
         fetchPlaceDetails()
+        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
 
         // Do any additional setup after loading the view.
     }
@@ -37,26 +40,10 @@ class PlaceDetailViewController: UIViewController {
     @IBOutlet weak var reviewsTextView: UITextView!
          
 
-           
-    @IBAction func toggleHoursTapped(_ sender: UIButton) {
-                isHoursVisible.toggle() // Toggle the flag
-
-                // Update the hours label visibility
-                reviewsTextView.isHidden = !isHoursVisible
-
-                // Update the button title based on visibility
-                let buttonTitle = isHoursVisible ? "Hide Reviews" : "Show Reviews"
-                toggleHoursButton.setTitle(buttonTitle, for: .normal)
-            }
-
-            @IBAction func getDetailsTapped(_ sender: UIButton) {
-                fetchPlaceDetails()
-            }
-
             func fetchPlaceDetails() {
                 let placesClient = GMSPlacesClient.shared()
-                guard let placeID = placeID else { return }
-                //let placeID = "ChIJwZGQzPQUkFQRRhd8D82mN_k" // Replace with the actual Place ID
+                //guard let placeID = placeID else { return }
+                let placeID = "ChIJwZGQzPQUkFQRRhd8D82mN_k" // Replace with the actual Place ID
 
                 placesClient.fetchPlace(fromPlaceID: placeID, placeFields: [.name, .formattedAddress, .openingHours, .rating, .photos, .coordinate,], sessionToken: nil, callback: { (place, error) in
                     if let error = error {
@@ -76,13 +63,19 @@ class PlaceDetailViewController: UIViewController {
             func updateUI(with place: GMSPlace) {
                 nameLabel.text = place.name
                 addressLabel.text = place.formattedAddress
-                print(place.openingHours?.weekdayText ?? "No opening hours data")
+                
+                if let weekdayText = place.openingHours?.weekdayText {
+                            hoursText = weekdayText.joined(separator: "\n")
+                        } else {
+                            hoursText = "No opening hours data"
+                        }
+                
                 if place.rating > 0 {
                     ratingsLabel.attributedText = createRatingAttributedString(rating: Double(place.rating))
                         } else {
                             ratingsLabel.text = "Rating: N/A"
                         }
-                //hoursLabel.text = place.openingHours?.weekdayText!.joined(separator: "\n")
+                
                
                 
                 // Fetch the first photo to display
@@ -95,6 +88,7 @@ class PlaceDetailViewController: UIViewController {
                         self.imageView.image = photo
                     })
                 }
+                reviewsTextView.text = hoursText
             }
     func fetchPlaceReviews(placeID: String) {
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -132,7 +126,10 @@ class PlaceDetailViewController: UIViewController {
                         }
 
                         DispatchQueue.main.async {
-                            self.reviewsTextView.attributedText = reviewsText
+                            self.reviewsText = reviewsText
+                                                   if self.segmentedControl.selectedSegmentIndex == 1 {
+                                                       self.reviewsTextView.attributedText = self.reviewsText
+                                                   }
                         }
                     }
                 } catch {
@@ -142,6 +139,16 @@ class PlaceDetailViewController: UIViewController {
 
             task.resume()
         }
+    @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+           switch sender.selectedSegmentIndex {
+           case 0:
+               reviewsTextView.text = hoursText
+           case 1:
+               reviewsTextView.attributedText = reviewsText
+           default:
+               break
+           }
+       }
 
     func createReviewAttributedString(authorName: String, rating: Int, text: String) -> NSAttributedString {
             let boldAttribute = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)]

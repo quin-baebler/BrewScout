@@ -388,15 +388,23 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vjQ-bd-VlU">
-                                <rect key="frame" x="159" y="538" width="75" height="35"/>
+                                <rect key="frame" x="164" y="538" width="66" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Login"/>
+                                <connections>
+                                    <action selector="LoginButtonTapped:" destination="ysd-du-p9Z" eventType="touchUpInside" id="3n3-1M-cYg"/>
+                                    <segue destination="dlC-k6-tqP" kind="showDetail" identifier="showShopList" id="LNy-c9-isL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wik-uZ-JyH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="email" destination="hxp-mx-jKz" id="xPn-HH-xa6"/>
+                        <outlet property="password" destination="WV0-bh-PQJ" id="QRU-Zm-FC7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mhS-BG-Abx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -502,7 +510,7 @@
             <objects>
                 <viewController id="dlC-k6-tqP" customClass="ShopListViewController" customModule="BrewScout" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Rh-IQ-Zvy">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XOx-Hh-yYJ">
@@ -570,6 +578,7 @@
                         <viewLayoutGuide key="safeArea" id="Ehv-xq-hSM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="jdj-yg-ekS"/>
                     <connections>
                         <outlet property="tableView" destination="XOx-Hh-yYJ" id="lhp-wZ-GDM"/>
                     </connections>
@@ -587,7 +596,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PcH-LV-OL4">
-                                <rect key="frame" x="16" y="86" width="361" height="224"/>
+                                <rect key="frame" x="16" y="110" width="361" height="224"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ShopName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDZ-wI-MOE">
@@ -604,13 +613,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMC-tN-1aK">
-                                <rect key="frame" x="16" y="429" width="361" height="83"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="F1a-1y-MhU">
                                 <rect key="frame" x="16" y="533" width="361" height="267"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -619,15 +621,30 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWE-Hc-zrB">
-                                <rect key="frame" x="97" y="490" width="198" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJZ-pW-fFC">
+                                <rect key="frame" x="16" y="50" width="62" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Show Reviews"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
                                 <connections>
-                                    <action selector="toggleHoursTapped:" destination="emp-oR-5dU" eventType="touchUpInside" id="QrY-ID-dmu"/>
+                                    <segue destination="dlC-k6-tqP" kind="show" identifier="backToShopList" id="wn8-CH-ph2"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qC5-Ip-zJR">
+                                <rect key="frame" x="127" y="494" width="139" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Hours"/>
+                                    <segment title="Reviews"/>
+                                </segments>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMC-tN-1aK">
+                                <rect key="frame" x="16" y="413" width="361" height="83"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7uc-aH-05p"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -638,7 +655,7 @@
                         <outlet property="nameLabel" destination="qDZ-wI-MOE" id="CfB-09-oMF"/>
                         <outlet property="ratingsLabel" destination="CV7-A9-CHo" id="8F9-xe-u8q"/>
                         <outlet property="reviewsTextView" destination="F1a-1y-MhU" id="bWX-fk-gEE"/>
-                        <outlet property="toggleHoursButton" destination="NWE-Hc-zrB" id="D0k-6u-eBy"/>
+                        <outlet property="segmentedControl" destination="qC5-Ip-zJR" id="sje-hd-9jk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aUU-bp-i2m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -647,6 +664,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="wn8-CH-ph2"/>
         <segue reference="RAG-ea-pxA"/>
     </inferredMetricsTieBreakers>
     <resources>
