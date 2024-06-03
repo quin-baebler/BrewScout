@@ -10,9 +10,9 @@ import MapKit
 import GooglePlaces
 import CoreLocation
 
-class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var mapView: MKMapView!
     
     let locationManager = CLLocationManager()
     var coffeeShops: [Place] = []
@@ -21,10 +21,8 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        mapView.delegate = self
+        mapView.showsUserLocation = true
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -35,6 +33,9 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             if let location = locations.first {
                 fetchNearbyCoffeeShops(location: location)
                 locationManager.stopUpdatingLocation()
+                
+                let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+                mapView.setRegion(region, animated: true)
             }
         }
 
@@ -54,9 +55,9 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                 do {
                     let placesResponse = try JSONDecoder().decode(PlacesResponse.self, from: data)
                     self.coffeeShops = placesResponse.results
-
+                    
                     DispatchQueue.main.async {
-                        self.tableView.reloadData()
+                        self.addAnnotationsToMap()
                     }
                 } catch {
                     print("Error decoding JSON: (error)")
@@ -64,17 +65,13 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             }.resume()
         }
 
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return coffeeShops.count
-        }
-
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            let place = coffeeShops[indexPath.row]
-            cell.textLabel?.numberOfLines = 0
-            cell.textLabel?.text = "\(place.name)\nLat: \(place.geometry.location.lat), Lng: \(place.geometry.location.lng)"
-            print(place)
-            return cell
+        func addAnnotationsToMap() {
+            for place in coffeeShops {
+                let annotation = MKPointAnnotation()
+                annotation.title = place.name
+                annotation.coordinate = CLLocationCoordinate2D(latitude: place.geometry.location.lat, longitude: place.geometry.location.lng)
+                mapView.addAnnotation(annotation)
+            }
         }
     }
 
