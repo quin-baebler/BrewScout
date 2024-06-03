@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyDqp86kFdps0TO4ROLxaxh6vTEEUIJXrQo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>307534404335</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.brewscout.brewscout</string>
+	<key>PROJECT_ID</key>
+	<string>brewscout-424117</string>
+	<key>STORAGE_BUCKET</key>
+	<string>brewscout-424117.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:307534404335:ios:8fda31eb5145f71587991a</string>
+</dict>
+</plist>

@@ -10,6 +10,7 @@
 		2FB0F4EE2C06559700DCCD6B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB0F4ED2C06559700DCCD6B /* ProfileViewController.swift */; };
 		2FB0F4F02C0655DE00DCCD6B /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB0F4EF2C0655DE00DCCD6B /* FavoritesViewController.swift */; };
 		2FB0F4F12C06708400DCCD6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34FB2AD32BFD821E00DDA310 /* Main.storyboard */; };
+		2FBA19DD2C0D1D9D00821393 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FBA19DC2C0D1D9D00821393 /* GoogleService-Info.plist */; };
 		341F15F02C0947E9008F7781 /* GooglePlaces in Frameworks */ = {isa = PBXBuildFile; productRef = 341F15EF2C0947E9008F7781 /* GooglePlaces */; };
 		341F15F22C094876008F7781 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341F15F12C094876008F7781 /* LoginViewController.swift */; };
 		341F15F42C0948DC008F7781 /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341F15F32C0948DC008F7781 /* PlaceDetailViewController.swift */; };
@@ -24,7 +25,6 @@
 		34FB2AEF2BFD822200DDA310 /* BrewScoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FB2AEE2BFD822200DDA310 /* BrewScoutUITests.swift */; };
 		34FB2AF12BFD822200DDA310 /* BrewScoutUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FB2AF02BFD822200DDA310 /* BrewScoutUITestsLaunchTests.swift */; };
 		88995CB72C0C416B00E74D73 /* ShopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88995CB62C0C416B00E74D73 /* ShopListViewController.swift */; };
-		9F95A18E2C0954B7005B2D2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F95A18D2C0954B7005B2D2C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +47,7 @@
 /* Begin PBXFileReference section */
 		2FB0F4ED2C06559700DCCD6B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2FB0F4EF2C0655DE00DCCD6B /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		2FBA19DC2C0D1D9D00821393 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		341F15F12C094876008F7781 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		341F15F32C0948DC008F7781 /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
 		34FB2ACA2BFD821E00DDA310 /* BrewScout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrewScout.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,7 +64,6 @@
 		34FB2AEE2BFD822200DDA310 /* BrewScoutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewScoutUITests.swift; sourceTree = "<group>"; };
 		34FB2AF02BFD822200DDA310 /* BrewScoutUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewScoutUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		88995CB62C0C416B00E74D73 /* ShopListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListViewController.swift; sourceTree = "<group>"; };
-		9F95A18D2C0954B7005B2D2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,8 +116,8 @@
 		34FB2ACC2BFD821E00DDA310 /* BrewScout */ = {
 			isa = PBXGroup;
 			children = (
-				9F95A18D2C0954B7005B2D2C /* GoogleService-Info.plist */,
 				34FB2ACD2BFD821E00DDA310 /* AppDelegate.swift */,
+				2FBA19DC2C0D1D9D00821393 /* GoogleService-Info.plist */,
 				34FB2ACF2BFD821E00DDA310 /* SceneDelegate.swift */,
 				341F15F12C094876008F7781 /* LoginViewController.swift */,
 				2FB0F4ED2C06559700DCCD6B /* ProfileViewController.swift */,
@@ -264,7 +264,7 @@
 			files = (
 				34FB2AD72BFD822100DDA310 /* Assets.xcassets in Resources */,
 				34FB2ADA2BFD822100DDA310 /* Base in Resources */,
-				9F95A18E2C0954B7005B2D2C /* GoogleService-Info.plist in Resources */,
+				2FBA19DD2C0D1D9D00821393 /* GoogleService-Info.plist in Resources */,
 				34FB2AD52BFD821E00DDA310 /* Base in Resources */,
 				2FB0F4F12C06708400DCCD6B /* Main.storyboard in Resources */,
 			);
@@ -486,8 +486,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -515,8 +516,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

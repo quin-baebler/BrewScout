@@ -1,5 +1,4 @@
 {
-  "originHash" : "bc30d287b04543a1f54d81f195580b86378987b210731c61c93d065c36a2f59f",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -128,5 +127,5 @@
       }
     }
   ],
-  "version" : 3
+  "version" : 2
 }

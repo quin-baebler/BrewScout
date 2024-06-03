@@ -5,7 +5,10 @@
 //  Created by Olivia Sapp on 5/28/24.
 //
 
+import FirebaseCore
+import FirebaseAuth
 import UIKit
+import GooglePlaces
 
 class RevTableCell : UITableViewCell{
     

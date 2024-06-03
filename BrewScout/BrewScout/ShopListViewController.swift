@@ -9,8 +9,9 @@ import UIKit
 class ShopListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     class TableCell : UITableViewCell{
         //cell components
-        @IBOutlet weak var shopImage: UIImageView!
         @IBOutlet weak var shopNameLabel: UILabel!
+        
+        @IBOutlet weak var shopImage: UIImageView!
         @IBOutlet weak var shopLocationLabel: UILabel!
         @IBOutlet weak var otherInfoLabel: UILabel!
         @IBOutlet weak var filledHeartButton: UIButton!
@@ -26,6 +27,8 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     
     //temp hard coded list
     //need to change this to be adative to user input
