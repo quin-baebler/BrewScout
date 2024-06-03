@@ -17,6 +17,15 @@ class shopTableCell : UITableViewCell {
     @IBOutlet weak var shopLocationLabel: UILabel!
     @IBOutlet weak var otherInfoLabel: UILabel!
     @IBOutlet weak var filledHeartButton: UIButton!
+    var isLiked = false
+    @IBAction func likeShop(_ sender: UIButton) {
+        isLiked = !isLiked
+        if (isLiked) {
+            filledHeartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else {
+            filledHeartButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+    }
 }
 
 class ShopListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, CLLocationManagerDelegate {
@@ -32,9 +41,6 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
         
         tableView.dataSource = self
         tableView.delegate = self
-        
-//        tableView.register(BrewScout.ShopListViewController.TableCell.self, forCellReuseIdentifier: "shopCell")
-//
         self.filteredCafes = coffeeShops
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -128,39 +134,8 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    //temp hard coded list
-    //need to change this to be adative to user input
-//    var cafeList =  [
-//        ("Cafe Solstice", "Seattle, WA", "Wifi, Bathroom, Hours 8am - 5pm"),
-//        ("Cafe Alegro", "Seattle, WA", "Wifi, Bathroom, Hours 8am - 4pm"),
-//        ("Sip House", "Seattle, WA", "Wifi, Bathroom, Hours 8am - 5pm")
-//    ]
-    
     var liked = true
     
-    //click to like or unlike the caffe
-    /*@IBAction func clickHeartButton(_ sender: Any) {
-        likeIt(<#T##tableView: UITableView##UITableView#>, cellForRowAt: <#T##IndexPath#>)
-    }*/
-   
-    //likes and unlikes the caffes
-    //updates the list of liked cafes
-//    func likeIt(_ tableView: UITableView, cellForRowAt indexPath: IndexPath){
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "shopCell", for: indexPath) as! TableCell
-//        let cafe = cafeList[indexPath.row]
-//
-//        if liked == true {
-//            cell.filledHeartButton.setImage(UIImage(named: "heart"), for: .normal)
-//            //remove from favorites list
-//            cafeList.remove(at: indexPath.row)
-//            liked = false
-//        } else { //changes heart to full
-//            cell.filledHeartButton.setImage(UIImage(named: "heart.fill"), for: .normal)
-//            //add to favorites list
-//            //cafeList.append(<#T##newElement: (String, String, String)##(String, String, String)#>)
-//            liked = true
-//        }
-//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return isFiltered ? filteredCafes.count : coffeeShops.count
@@ -174,7 +149,8 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.shopNameLabel.text = place.name
         cell.shopLocationLabel.text = "Location"
         cell.otherInfoLabel.text = "Other Info"
-        cell.filledHeartButton.setImage(UIImage(named: "heart.fill"), for: .normal)
+        cell.filledHeartButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        
         if let photos = place.photos, let photoReference = photos.first?.photo_reference {
             fetchImage(for: photoReference) { image in
                 DispatchQueue.main.async {
@@ -188,6 +164,8 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
+
+    
     //change view to the shop page
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //when clicked
@@ -196,7 +174,7 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     //set size
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 190
+        return 210
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

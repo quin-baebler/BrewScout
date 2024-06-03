@@ -532,7 +532,7 @@
                                                     <color key="textColor" systemColor="secondaryLabelColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1iG-Nr-Puq">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1iG-Nr-Puq">
                                                     <rect key="frame" x="342" y="168" width="51" height="35"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button"/>
@@ -540,7 +540,7 @@
                                                         <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
                                                     </buttonConfiguration>
                                                     <connections>
-                                                        <action selector="clickHeartButton:" destination="ybH-B9-wJH" eventType="primaryActionTriggered" id="vEh-Hr-LAK"/>
+                                                        <action selector="likeShop:" destination="oox-4e-QX9" eventType="touchUpInside" id="ZRu-b6-vB4"/>
                                                     </connections>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R2a-wx-uXH">
