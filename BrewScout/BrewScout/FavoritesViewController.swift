@@ -40,10 +40,10 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     //need to change this to be adative to user input
     var cafeListFaves =  [
         ("Cafe Solstice", "Seattle, WA", "Wifi, Bathroom, Hours 8am - 5pm"),
-        ("Cafe Alegro", "Seattle, WA", "Wifi, Bathroom, Hours 8am - 4pm"),
+        ("Cafe Allegro", "Seattle, WA", "Wifi, Bathroom, Hours 8am - 4pm"),
         ("Sip House", "Seattle, WA", "Wifi, Bathroom, Hours 8am - 5pm")
     ]
-    var shopNamesFaves = ["Cafe Solstice", "Cafe Alegro", "Sip House"]
+    var shopNamesFaves = ["Cafe Solstice", "Cafe Allegro", "Sip House"]
    
     var filteredFaves = [(String, String, String)]()
     var searchActive : Bool = false
@@ -85,11 +85,13 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         cell.shopNameLabel.text = cafe.0
         cell.shopLocationLabel.text = cafe.1
         cell.otherInfoLabel.text = cafe.2
-        if liked == true {
-            cell.filledHeartButton.setImage(UIImage(named: "heart.fill"), for: .normal)
-        } else {
-            cell.filledHeartButton.setImage(UIImage(named: "heart"), for: .normal)
-        }
+//        if liked == true {
+//            cell.filledHeartButton.setImage(UIImage(named: "heart.fill"), for: .normal)
+//        } else {
+//            cell.filledHeartButton.setImage(UIImage(named: "heart"), for: .normal)
+//        }
+        cell.filledHeartButton.setImage(UIImage(named: "heart"), for: .normal)
+
 
         //add image
         let imgName: String
