@@ -420,7 +420,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pvi-bL-wUQ">
-                                <rect key="frame" x="-9" y="764" width="389" height="46"/>
+                                <rect key="frame" x="-11" y="764" width="389" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem title="Item" id="qNl-A5-m8D"/>
@@ -468,7 +468,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" title="">
-                                                        <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
+                                                        <imageReference key="image" image="heart.fill" catalog="system" symbolScale="large"/>
                                                     </buttonConfiguration>
                                                     <connections>
                                                         <action selector="clickHeartButton:" destination="dlr-MP-sLd" eventType="primaryActionTriggered" id="5SO-gF-8sC"/>
@@ -486,13 +486,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aYI-kP-Olx">
-                                <rect key="frame" x="-9" y="65" width="396" height="44"/>
+                            <searchBar contentMode="redraw" fixedFrame="YES" text="" translatesAutoresizingMaskIntoConstraints="NO" id="aYI-kP-Olx">
+                                <rect key="frame" x="-11" y="65" width="397" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="ybH-B9-wJH" id="CkQ-CA-TyV"/>
-                                </connections>
                             </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YsS-Qb-3gR"/>
@@ -674,11 +671,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wn8-CH-ph2"/>
+        <segue reference="LNy-c9-isL"/>
         <segue reference="RAG-ea-pxA"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="person.circle" catalog="system" width="128" height="123"/>
         <image name="person.crop.circle" catalog="system" width="32" height="32"/>
         <systemColor name="labelColor">
