@@ -73,6 +73,43 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 mapView.addAnnotation(annotation)
             }
         }
+    
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+                    if annotation is MKUserLocation {
+                        return nil
+                    }
+                    
+                    let identifier = "Place"
+                    var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView
+                    
+                    if annotationView == nil {
+                        annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                        annotationView?.canShowCallout = true
+                        
+                        let btn = UIButton(type: .detailDisclosure)
+                        annotationView?.rightCalloutAccessoryView = btn
+                    } else {
+                        annotationView?.annotation = annotation
+                    }
+                    
+                    return annotationView
+                }
+            
+                func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+                    guard let annotation = view.annotation else { return }
+                    
+                    let place = coffeeShops.first { $0.name == annotation.title }
+                    
+                    performSegue(withIdentifier: "showDetail", sender: place)
+                }
+            
+        //        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //            if segue.identifier == "showDetail",
+        //               let destinationVC = segue.destination as? DetailViewController,
+        //               let place = sender as? Place {
+        //                destinationVC.place = place
+        //            }
+        //        }
     }
 
     struct Place: Decodable {
