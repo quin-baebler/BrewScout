@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MOC-8o-kbq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dlC-k6-tqP">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -518,7 +518,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="shopCell" rowHeight="214" id="oox-4e-QX9" customClass="TableCell" customModule="BrewScout" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="shopCell" rowHeight="214" id="oox-4e-QX9" customClass="shopTableCell" customModule="BrewScout" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="214"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oox-4e-QX9" id="shm-bE-FdO">
@@ -564,10 +564,10 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="filledHeartButton" destination="1iG-Nr-Puq" id="lOI-nR-pTl"/>
-                                            <outlet property="otherInfoLabel" destination="vPD-q7-H1I" id="zET-t9-9Me"/>
-                                            <outlet property="shopImage" destination="R2a-wx-uXH" id="DCD-aj-ANU"/>
-                                            <outlet property="shopLocationLabel" destination="lOI-QC-e64" id="X40-lQ-8Ng"/>
+                                            <outlet property="filledHeartButton" destination="1iG-Nr-Puq" id="ns7-eS-ao1"/>
+                                            <outlet property="otherInfoLabel" destination="vPD-q7-H1I" id="Giy-g5-PLa"/>
+                                            <outlet property="shopImage" destination="R2a-wx-uXH" id="VLZ-T0-L88"/>
+                                            <outlet property="shopLocationLabel" destination="lOI-QC-e64" id="GVG-GK-vQM"/>
                                             <outlet property="shopNameLabel" destination="Hw7-er-6A2" id="KT6-HT-MGv"/>
                                         </connections>
                                     </tableViewCell>
@@ -701,10 +701,10 @@
         <segue reference="RAG-ea-pxA"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="heart" catalog="system" width="128" height="107"/>
-        <image name="heart.fill" catalog="system" width="128" height="107"/>
-        <image name="person.circle" catalog="system" width="128" height="123"/>
-        <image name="person.crop.circle" catalog="system" width="128" height="123"/>
+        <image name="heart" catalog="system" width="32" height="32"/>
+        <image name="heart.fill" catalog="system" width="32" height="32"/>
+        <image name="person.circle" catalog="system" width="32" height="32"/>
+        <image name="person.crop.circle" catalog="system" width="32" height="32"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

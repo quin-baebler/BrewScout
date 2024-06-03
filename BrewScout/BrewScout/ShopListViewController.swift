@@ -6,25 +6,123 @@
 //
 
 import UIKit
-class ShopListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
-    class TableCell : UITableViewCell{
-        //cell components
-        @IBOutlet weak var shopNameLabel: UILabel!
-        
-        @IBOutlet weak var shopImage: UIImageView!
-        @IBOutlet weak var shopLocationLabel: UILabel!
-        @IBOutlet weak var otherInfoLabel: UILabel!
-        @IBOutlet weak var filledHeartButton: UIButton!
-    }
+import MapKit
+import GooglePlaces
+import CoreLocation
 
+class shopTableCell : UITableViewCell {
+    //cell components
+    @IBOutlet weak var shopNameLabel: UILabel!
+    @IBOutlet weak var shopImage: UIImageView!
+    @IBOutlet weak var shopLocationLabel: UILabel!
+    @IBOutlet weak var otherInfoLabel: UILabel!
+    @IBOutlet weak var filledHeartButton: UIButton!
+}
+
+class ShopListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, CLLocationManagerDelegate {
+    
+    let locationManager = CLLocationManager()
+    var coffeeShops: [Place] = []
+    var filteredCafes = [Place]()
+    var isFiltered = false
+    var apiKey: String = "AIzaSyDMfVpurbF4MJ2ZQnhbUPiU03KICxQ_uug"
 
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         tableView.dataSource = self
         tableView.delegate = self
-        super.viewDidLoad()
-        self.filteredCafes = cafeList
+        
+//        tableView.register(BrewScout.ShopListViewController.TableCell.self, forCellReuseIdentifier: "shopCell")
+//
+        self.filteredCafes = coffeeShops
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         // Do any additional setup after loading the view.
     }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            fetchNearbyCoffeeShops(location: location)
+            locationManager.stopUpdatingLocation()
+        }
+    }
+
+    func fetchNearbyCoffeeShops(location: CLLocation) {
+        let urlString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(location.coordinate.latitude),\(location.coordinate.longitude)&radius=1000&type=cafe&key=\(apiKey)"
+
+        guard let url = URL(string: urlString) else {
+            return
+        }
+
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else {
+                print("Error fetching data: (String(describing: error))")
+                return
+            }
+
+            do {
+                let placesResponse = try JSONDecoder().decode(PlacesResponse.self, from: data)
+                self.coffeeShops = placesResponse.results
+
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            } catch {
+                print("Error decoding JSON: (error)")
+            }
+        }.resume()
+    }
+    
+    func fetchImage(for photoReference: String, completion: @escaping (UIImage?) -> Void) {
+        let urlString = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photoreference=\(photoReference)&key=\(apiKey)"
+        
+        guard let url = URL(string: urlString) else {
+            print("Invalid URL")
+            completion(nil)
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else {
+                print("Error fetching image: \(String(describing: error))")
+                completion(nil)
+                return
+            }
+                
+            let image = UIImage(data: data)
+            completion(image)
+        }.resume()
+    }
+    
+    struct Place: Decodable {
+        let name: String
+        let place_id: String
+        let types: [String]
+        let geometry: Geometry
+        let photos: [Photo]?
+    }
+    
+    struct Photo: Decodable {
+        let photo_reference: String
+        let height: Int
+        let width: Int
+    }
+
+    struct Geometry: Decodable {
+        let location: Location
+    }
+
+    struct Location: Decodable {
+        let lat: Double
+        let lng: Double
+    }
+
+    struct PlacesResponse: Decodable {
+        let results: [Place]
+    }
+    
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -32,13 +130,11 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     //temp hard coded list
     //need to change this to be adative to user input
-    var cafeList =  [
-        ("Cafe Solstice", "Seattle, WA", "Wifi, Bathroom, Hours 8am - 5pm"),
-        ("Cafe Alegro", "Seattle, WA", "Wifi, Bathroom, Hours 8am - 4pm"),
-        ("Sip House", "Seattle, WA", "Wifi, Bathroom, Hours 8am - 5pm")
-    ]
-    
-    var filteredCafes = [(String, String, String)]()
+//    var cafeList =  [
+//        ("Cafe Solstice", "Seattle, WA", "Wifi, Bathroom, Hours 8am - 5pm"),
+//        ("Cafe Alegro", "Seattle, WA", "Wifi, Bathroom, Hours 8am - 4pm"),
+//        ("Sip House", "Seattle, WA", "Wifi, Bathroom, Hours 8am - 5pm")
+//    ]
     
     var liked = true
     
@@ -49,37 +145,46 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
    
     //likes and unlikes the caffes
     //updates the list of liked cafes
-    func likeIt(_ tableView: UITableView, cellForRowAt indexPath: IndexPath){
-        let cell = tableView.dequeueReusableCell(withIdentifier: "shopCell", for: indexPath) as! TableCell
-        let cafe = cafeList[indexPath.row]
-        
-        if liked == true {
-            cell.filledHeartButton.setImage(UIImage(named: "heart"), for: .normal)
-            //remove from favorites list
-            cafeList.remove(at: indexPath.row)
-            liked = false
-        } else { //changes heart to full
-            cell.filledHeartButton.setImage(UIImage(named: "heart.fill"), for: .normal)
-            //add to favorites list
-            //cafeList.append(<#T##newElement: (String, String, String)##(String, String, String)#>)
-            liked = true
-        }
-    }
+//    func likeIt(_ tableView: UITableView, cellForRowAt indexPath: IndexPath){
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "shopCell", for: indexPath) as! TableCell
+//        let cafe = cafeList[indexPath.row]
+//
+//        if liked == true {
+//            cell.filledHeartButton.setImage(UIImage(named: "heart"), for: .normal)
+//            //remove from favorites list
+//            cafeList.remove(at: indexPath.row)
+//            liked = false
+//        } else { //changes heart to full
+//            cell.filledHeartButton.setImage(UIImage(named: "heart.fill"), for: .normal)
+//            //add to favorites list
+//            //cafeList.append(<#T##newElement: (String, String, String)##(String, String, String)#>)
+//            liked = true
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cafeList.count
+        return isFiltered ? filteredCafes.count : coffeeShops.count
     }
     
     //formating the table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "shopCell", for: indexPath) as! TableCell
-        let cafe = cafeList[indexPath.row]
-        cell.shopNameLabel.text = cafe.0
-        cell.shopLocationLabel.text = cafe.1
-        cell.otherInfoLabel.text = cafe.2
+        let cell = tableView.dequeueReusableCell(withIdentifier: "shopCell", for: indexPath) as! shopTableCell
+        let place = isFiltered ? filteredCafes[indexPath.row] : coffeeShops[indexPath.row]
+        print(place)
+        cell.shopNameLabel.text = place.name
+        cell.shopLocationLabel.text = "Location"
+        cell.otherInfoLabel.text = "Other Info"
         cell.filledHeartButton.setImage(UIImage(named: "heart.fill"), for: .normal)
+        if let photos = place.photos, let photoReference = photos.first?.photo_reference {
+            fetchImage(for: photoReference) { image in
+                DispatchQueue.main.async {
+                    cell.shopImage.image = image
+                }
+            }
+        } else {
+            cell.shopImage.image = nil
+        }
         //add image and othercompenents
-        
         return cell
     }
     
@@ -96,10 +201,12 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText != "" {
-            filteredCafes = cafeList.filter({$0.0.contains(searchText)})
+            filteredCafes = coffeeShops.filter({$0.name.contains(searchText)})
+            isFiltered = true
             tableView.reloadData()
         } else {
-            self.filteredCafes = cafeList
+            self.filteredCafes = coffeeShops
+            isFiltered = false
             tableView.reloadData()
         }
     }
