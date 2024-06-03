@@ -6,7 +6,7 @@
 //
 
 import UIKit
-class ShopListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ShopListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     class TableCell : UITableViewCell{
         //cell components
         @IBOutlet weak var shopNameLabel: UILabel!
@@ -22,7 +22,7 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.dataSource = self
         tableView.delegate = self
         super.viewDidLoad()
-
+        self.filteredCafes = cafeList
         // Do any additional setup after loading the view.
     }
 
@@ -32,11 +32,13 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     //temp hard coded list
     //need to change this to be adative to user input
-    var cafeListFaves =  [
+    var cafeList =  [
         ("Cafe Solstice", "Seattle, WA", "Wifi, Bathroom, Hours 8am - 5pm"),
         ("Cafe Alegro", "Seattle, WA", "Wifi, Bathroom, Hours 8am - 4pm"),
         ("Sip House", "Seattle, WA", "Wifi, Bathroom, Hours 8am - 5pm")
     ]
+    
+    var filteredCafes = [(String, String, String)]()
     
     var liked = true
     
@@ -48,30 +50,30 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
     //likes and unlikes the caffes
     //updates the list of liked cafes
     func likeIt(_ tableView: UITableView, cellForRowAt indexPath: IndexPath){
-        let cell = tableView.dequeueReusableCell(withIdentifier: "exampleFavCell", for: indexPath) as! TableCell
-        let cafe = cafeListFaves[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "shopCell", for: indexPath) as! TableCell
+        let cafe = cafeList[indexPath.row]
         
         if liked == true {
             cell.filledHeartButton.setImage(UIImage(named: "heart"), for: .normal)
             //remove from favorites list
-            cafeListFaves.remove(at: indexPath.row)
+            cafeList.remove(at: indexPath.row)
             liked = false
         } else { //changes heart to full
             cell.filledHeartButton.setImage(UIImage(named: "heart.fill"), for: .normal)
             //add to favorites list
-            //cafeListFaves.append(<#T##newElement: (String, String, String)##(String, String, String)#>)
+            //cafeList.append(<#T##newElement: (String, String, String)##(String, String, String)#>)
             liked = true
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cafeListFaves.count
+        return cafeList.count
     }
     
     //formating the table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "exampleFavCell", for: indexPath) as! TableCell
-        let cafe = cafeListFaves[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "shopCell", for: indexPath) as! TableCell
+        let cafe = cafeList[indexPath.row]
         cell.shopNameLabel.text = cafe.0
         cell.shopLocationLabel.text = cafe.1
         cell.otherInfoLabel.text = cafe.2
@@ -92,6 +94,15 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
         return 150
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText != "" {
+            filteredCafes = cafeList.filter({$0.0.contains(searchText)})
+            tableView.reloadData()
+        } else {
+            self.filteredCafes = cafeList
+            tableView.reloadData()
+        }
+    }
     // Use this to pass the place id into the details page for the specific shop - Quin
     /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if segue.identifier == "showPlaceDetail", // whatever you make the segue called

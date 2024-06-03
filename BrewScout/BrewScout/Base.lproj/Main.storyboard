@@ -520,7 +520,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="214" id="oox-4e-QX9" customClass="TableCell" customModule="BrewScout" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="shopCell" rowHeight="214" id="oox-4e-QX9" customClass="TableCell" customModule="BrewScout" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="214"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oox-4e-QX9" id="shm-bE-FdO">
@@ -680,7 +680,7 @@
     <resources>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="person.circle" catalog="system" width="128" height="123"/>
-        <image name="person.crop.circle" catalog="system" width="128" height="123"/>
+        <image name="person.crop.circle" catalog="system" width="32" height="32"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
