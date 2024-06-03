@@ -24,6 +24,7 @@
 		34FB2AEF2BFD822200DDA310 /* BrewScoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FB2AEE2BFD822200DDA310 /* BrewScoutUITests.swift */; };
 		34FB2AF12BFD822200DDA310 /* BrewScoutUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FB2AF02BFD822200DDA310 /* BrewScoutUITestsLaunchTests.swift */; };
 		9F95A18E2C0954B7005B2D2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F95A18D2C0954B7005B2D2C /* GoogleService-Info.plist */; };
+		9F95A1902C095678005B2D2C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F95A18F2C095678005B2D2C /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		34FB2AEE2BFD822200DDA310 /* BrewScoutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewScoutUITests.swift; sourceTree = "<group>"; };
 		34FB2AF02BFD822200DDA310 /* BrewScoutUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewScoutUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9F95A18D2C0954B7005B2D2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9F95A18F2C095678005B2D2C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				341F15F32C0948DC008F7781 /* PlaceDetailViewController.swift */,
 				2FB0F4EF2C0655DE00DCCD6B /* FavoritesViewController.swift */,
 				34FB2AD32BFD821E00DDA310 /* Main.storyboard */,
+				9F95A18F2C095678005B2D2C /* MapViewController.swift */,
 				34FB2AD62BFD822100DDA310 /* Assets.xcassets */,
 				34FB2AD82BFD822100DDA310 /* LaunchScreen.storyboard */,
 				34FB2ADB2BFD822100DDA310 /* Info.plist */,
@@ -295,6 +298,7 @@
 				2FB0F4EE2C06559700DCCD6B /* ProfileViewController.swift in Sources */,
 				2FB0F4F02C0655DE00DCCD6B /* FavoritesViewController.swift in Sources */,
 				34FB2AD02BFD821E00DDA310 /* SceneDelegate.swift in Sources */,
+				9F95A1902C095678005B2D2C /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
