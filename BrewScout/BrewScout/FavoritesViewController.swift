@@ -71,8 +71,9 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     
     //change view to the shop page
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //when clicked
-        //switch pages
+        let selectedCafe = searchActive ? filteredFaves[indexPath.row] : favoriteShops.list[indexPath.row]
+                let placeID = selectedCafe.shopID
+                performSegue(withIdentifier: "showFromFavs", sender: placeID)
     }
     
     //set size
@@ -92,6 +93,13 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.reloadData()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "showFromFavs", // whatever you make the segue called
+               let placeDetailVC = segue.destination as? PlaceDetailViewController,
+               let placeID = sender as? String { // can you pass the placeID here so I can access it to display the details
+                placeDetailVC.placeID = placeID
+            }
+        }
     
     
     /*

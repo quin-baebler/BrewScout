@@ -187,7 +187,7 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "shopCell", for: indexPath) as! shopTableCell
         let place = isFiltered ? filteredCafes[indexPath.row] : coffeeShops[indexPath.row]
-        print(place)
+        //print(place)
         cell.shopNameLabel.text = place.name
         cell.shopName = place.name
         cell.otherInfoLabel.text = "Other Info"
@@ -228,8 +228,11 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     //change view to the shop page
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //when clicked
-        //switch pages
+        let selectedCafe = isFiltered ? filteredCafes[indexPath.row] : coffeeShops[indexPath.row]
+               let placeID = selectedCafe.place_id
+        //print(placeID)
+               performSegue(withIdentifier: "showFromSL", sender: placeID)
+       
     }
     
     //set size
@@ -249,11 +252,11 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     // Use this to pass the place id into the details page for the specific shop - Quin
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "showPlaceDetail", // whatever you make the segue called
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "showFromSL", // whatever you make the segue called
                let placeDetailVC = segue.destination as? PlaceDetailViewController,
                let placeID = sender as? String { // can you pass the placeID here so I can access it to display the details
                 placeDetailVC.placeID = placeID
             }
-        } */
+        }
 }

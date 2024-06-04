@@ -25,9 +25,15 @@ class PlaceDetailViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+      print("View did load called")
     let placesClient = GMSPlacesClient.shared()
     // reviewsTextView.isHidden = true
-    fetchPlaceDetails()
+      if let placeID = placeID {
+              print("Place ID in PlaceDetailViewController: \(placeID)")
+              fetchPlaceDetails()
+          } else {
+              print("Place ID is nil")
+          }
     segmentedControl.addTarget(
       self, action: #selector(segmentedControlValueChanged(_:)), for: .valueChanged)
     reviewsTextView.isEditable = false
@@ -37,6 +43,7 @@ class PlaceDetailViewController: UIViewController {
   func fetchPlaceDetails() {
     let placesClient = GMSPlacesClient.shared()
     guard let placeID = placeID else { return }
+      print(placeID)
     //let placeID = "ChIJwZGQzPQUkFQRRhd8D82mN_k"  // Replace with the actual Place ID
 
     placesClient.fetchPlace(
