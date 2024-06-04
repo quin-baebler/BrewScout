@@ -20,6 +20,7 @@ class shopTableCell : UITableViewCell {
     @IBOutlet weak var otherInfoLabel: UILabel!
     @IBOutlet weak var filledHeartButton: UIButton!
     var isLiked = false
+    var shopName = ""
     var shopID = ""
     @IBAction func likeShop(_ sender: UIButton) {
         isLiked = !isLiked
@@ -88,6 +89,32 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
         }.resume()
     }
     
+    func fetchPlaceDetails(for placeID: String, completion: @escaping (String?) -> Void) {
+        let urlString = "https://maps.googleapis.com/maps/api/place/details/json?place_id=\(placeID)&key=\(apiKey)"
+        
+        guard let url = URL(string: urlString) else {
+            completion(nil)
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else {
+                print("Error fetching place details: \(String(describing: error))")
+                completion(nil)
+                return
+            }
+            
+            do {
+                let placeDetailsResponse = try JSONDecoder().decode(PlaceDetailsResponse.self, from: data)
+                let address = placeDetailsResponse.result.formatted_address
+                completion(address)
+            } catch {
+                print("Error decoding place details JSON: \(error)")
+                completion(nil)
+            }
+        }.resume()
+    }
+    
     func fetchImage(for photoReference: String, completion: @escaping (UIImage?) -> Void) {
         let urlString = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=100&photoreference=\(photoReference)&key=\(apiKey)"
         
@@ -113,6 +140,7 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
         let name: String
         let place_id: String
         let types: [String]
+        let formatted_address: String?
         let geometry: Geometry
         let photos: [Photo]?
     }
@@ -136,6 +164,13 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
         let results: [Place]
     }
     
+    struct PlaceDetailsResponse: Decodable {
+        let result: PlaceDetails
+    }
+
+    struct PlaceDetails: Decodable {
+        let formatted_address: String
+    }
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -154,9 +189,13 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
         let place = isFiltered ? filteredCafes[indexPath.row] : coffeeShops[indexPath.row]
         print(place)
         cell.shopNameLabel.text = place.name
-        cell.shopLocationLabel.text = "Location"
+        cell.shopName = place.name
         cell.otherInfoLabel.text = "Other Info"
         cell.shopID = place.place_id
+        
+        // checks if shop is in favorites list
+        // if so, fill shop's favorite button
+        // leave empty if not
         if (favoriteShops.list.contains(where: {$0.shopID == cell.shopID})) {
             cell.filledHeartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             cell.isLiked = true
@@ -165,6 +204,7 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         cell.shopID = place.place_id
         
+        // get shop image
         if let photos = place.photos, let photoReference = photos.first?.photo_reference {
             fetchImage(for: photoReference) { image in
                 DispatchQueue.main.async {
@@ -174,7 +214,13 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
         } else {
             cell.shopImage.image = nil
         }
-        //add image and othercompenents
+        
+        // Fetch place details for the address
+        fetchPlaceDetails(for: place.place_id) { address in
+            DispatchQueue.main.async {
+                cell.shopLocationLabel.text = address
+            }
+        }
         return cell
     }
     
