@@ -3,7 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -218,7 +218,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GrC-E1-TbF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="144" y="1111"/>
+            <point key="canvasLocation" x="1069.4656488549617" y="1110.5633802816901"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="4ef-Fm-ReJ">
@@ -370,7 +370,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fud-9e-3wW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="917" y="1111"/>
+            <point key="canvasLocation" x="1843.5114503816794" y="1110.5633802816901"/>
         </scene>
         <!--List-->
         <scene sceneID="epr-37-6IN">
@@ -462,7 +462,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LFP-4m-o0t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1604" y="1111"/>
+            <point key="canvasLocation" x="2530.5343511450383" y="1110.5633802816901"/>
         </scene>
         <!--Place Detail View Controller-->
         <scene sceneID="mQY-b6-3yT">
@@ -542,7 +542,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="MOC-8o-kbq" kind="relationship" relationship="viewControllers" id="h3s-yt-E1L"/>
+                        <segue destination="aTD-Rl-Uhe" kind="relationship" relationship="viewControllers" id="h3s-yt-E1L"/>
                         <segue destination="oZV-Xa-sAQ" kind="relationship" relationship="viewControllers" id="NYf-BB-ZJf"/>
                         <segue destination="ybH-B9-wJH" kind="relationship" relationship="viewControllers" id="c83-nF-WIw"/>
                         <segue destination="dlC-k6-tqP" kind="relationship" relationship="viewControllers" id="xgE-jg-HXs"/>
@@ -552,7 +552,7 @@
             </objects>
             <point key="canvasLocation" x="-2251" y="726"/>
         </scene>
-        <!--Map-->
+        <!--Map View Controller-->
         <scene sceneID="zcE-4C-qAG">
             <objects>
                 <viewController id="MOC-8o-kbq" customClass="MapViewController" customModule="BrewScout" customModuleProvider="target" sceneMemberID="viewController">
@@ -569,7 +569,6 @@
                         <viewLayoutGuide key="safeArea" id="4yg-2g-c0m"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="Weg-vg-FYY"/>
                     <navigationItem key="navigationItem" id="MBO-ra-0Zf"/>
                     <connections>
                         <outlet property="mapView" destination="dve-8H-QEa" id="M6g-aT-pOZ"/>
@@ -578,11 +577,73 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KJW-s0-MzV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-560" y="1111"/>
+            <point key="canvasLocation" x="365.64885496183206" y="1110.5633802816901"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="L9e-tv-rgW">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4gz-nN-TTB" customClass="SettingsViewController" customModule="BrewScout" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="SettingsViewController" id="ZdZ-aS-mKe">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1000" minValue="0.0" maxValue="10000" translatesAutoresizingMaskIntoConstraints="NO" id="Wkm-o0-9Yc">
+                                <rect key="frame" x="48" y="284" width="293" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EeT-ke-e4s">
+                                <rect key="frame" x="94" y="364" width="234" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XRF-8h-THz">
+                                <rect key="frame" x="257" y="574" width="128" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save Settings"/>
+                                <connections>
+                                    <action selector="saveButton:" destination="4gz-nN-TTB" eventType="touchUpInside" id="Qyd-U6-GCm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="NIF-aN-bGa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="SettingsViewController"/>
+                    </view>
+                    <connections>
+                        <outlet property="radiusButton" destination="XRF-8h-THz" id="uOp-Wm-7Hy"/>
+                        <outlet property="radiusLabel" destination="EeT-ke-e4s" id="gXc-kh-ULf"/>
+                        <outlet property="radiusSlider" destination="Wkm-o0-9Yc" id="aZn-LJ-NWN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mjW-VF-oTe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-561.06870229007632" y="1815.4929577464789"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="SiC-hS-AZx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aTD-Rl-Uhe" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" id="Weg-vg-FYY"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uKS-jT-VhI">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MOC-8o-kbq" kind="relationship" relationship="rootViewController" id="dyQ-ge-CfS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AGJ-8T-ISB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-561.06870229007632" y="1110.5633802816901"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="EbY-ea-D3a"/>
+        <segue reference="cb3-hj-ZuH"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="heart" catalog="system" width="128" height="107"/>

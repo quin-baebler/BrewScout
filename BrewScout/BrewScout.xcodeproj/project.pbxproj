@@ -27,6 +27,7 @@
 		88995CB72C0C416B00E74D73 /* ShopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88995CB62C0C416B00E74D73 /* ShopListViewController.swift */; };
 		88C57BD02C0E8E8400C9D3A3 /* favoriteShops.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C57BCF2C0E8E8400C9D3A3 /* favoriteShops.swift */; };
 		9F1CDCD82C0E6ABF00999F02 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1CDCD72C0E6ABF00999F02 /* MapViewController.swift */; };
+		9F26628A2C0F06070054EA7A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2662892C0F06070054EA7A /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		88995CB62C0C416B00E74D73 /* ShopListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListViewController.swift; sourceTree = "<group>"; };
 		88C57BCF2C0E8E8400C9D3A3 /* favoriteShops.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = favoriteShops.swift; sourceTree = "<group>"; };
 		9F1CDCD72C0E6ABF00999F02 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		9F2662892C0F06070054EA7A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				341F15F32C0948DC008F7781 /* PlaceDetailViewController.swift */,
 				2FB0F4EF2C0655DE00DCCD6B /* FavoritesViewController.swift */,
 				34FB2AD32BFD821E00DDA310 /* Main.storyboard */,
+				9F2662892C0F06070054EA7A /* SettingsViewController.swift */,
 				88995CB62C0C416B00E74D73 /* ShopListViewController.swift */,
 				88C57BCF2C0E8E8400C9D3A3 /* favoriteShops.swift */,
 				9F1CDCD72C0E6ABF00999F02 /* MapViewController.swift */,
@@ -307,6 +310,7 @@
 			files = (
 				341F15F22C094876008F7781 /* LoginViewController.swift in Sources */,
 				88C57BD02C0E8E8400C9D3A3 /* favoriteShops.swift in Sources */,
+				9F26628A2C0F06070054EA7A /* SettingsViewController.swift in Sources */,
 				34FB2AD22BFD821E00DDA310 /* ViewController.swift in Sources */,
 				341F15F42C0948DC008F7781 /* PlaceDetailViewController.swift in Sources */,
 				34FB2ACE2BFD821E00DDA310 /* AppDelegate.swift in Sources */,
