@@ -64,52 +64,48 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 }
             }.resume()
         }
-
-        func addAnnotationsToMap() {
+    func addAnnotationsToMap() {
             for place in coffeeShops {
                 let annotation = MKPointAnnotation()
                 annotation.title = place.name
+                annotation.subtitle = place.place_id
                 annotation.coordinate = CLLocationCoordinate2D(latitude: place.geometry.location.lat, longitude: place.geometry.location.lng)
                 mapView.addAnnotation(annotation)
             }
         }
-    
+
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-                    if annotation is MKUserLocation {
-                        return nil
-                    }
-                    
-                    let identifier = "Place"
-                    var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView
-                    
-                    if annotationView == nil {
-                        annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                        annotationView?.canShowCallout = true
-                        
-                        let btn = UIButton(type: .detailDisclosure)
-                        annotationView?.rightCalloutAccessoryView = btn
-                    } else {
-                        annotationView?.annotation = annotation
-                    }
-                    
-                    return annotationView
-                }
-            
-                func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-                    guard let annotation = view.annotation else { return }
-                    
-                    let place = coffeeShops.first { $0.name == annotation.title }
-                    
-                    performSegue(withIdentifier: "showDetail", sender: place)
-                }
-            
-        //        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //            if segue.identifier == "showDetail",
-        //               let destinationVC = segue.destination as? DetailViewController,
-        //               let place = sender as? Place {
-        //                destinationVC.place = place
-        //            }
-        //        }
+            if annotation is MKUserLocation {
+                return nil
+            }
+
+            let identifier = "CoffeeShop"
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
+
+            if annotationView == nil {
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                annotationView?.canShowCallout = true
+                annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            } else {
+                annotationView?.annotation = annotation
+            }
+
+            return annotationView
+        }
+
+        func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+            if let annotation = view.annotation, let placeID = annotation.subtitle {
+                performSegue(withIdentifier: "showPlaceDetail", sender: placeID)
+            }
+        }
+
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "showPlaceDetail",
+               let placeDetailVC = segue.destination as? PlaceDetailViewController,
+               let placeID = sender as? String {
+                placeDetailVC.placeID = placeID
+            }
+        }
     }
 
     struct Place: Decodable {

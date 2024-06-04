@@ -36,8 +36,8 @@ class PlaceDetailViewController: UIViewController {
 
   func fetchPlaceDetails() {
     let placesClient = GMSPlacesClient.shared()
-    //guard let placeID = placeID else { return }
-    let placeID = "ChIJwZGQzPQUkFQRRhd8D82mN_k"  // Replace with the actual Place ID
+    guard let placeID = placeID else { return }
+    //let placeID = "ChIJwZGQzPQUkFQRRhd8D82mN_k"  // Replace with the actual Place ID
 
     placesClient.fetchPlace(
       fromPlaceID: placeID,
