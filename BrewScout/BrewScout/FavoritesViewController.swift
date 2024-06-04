@@ -28,14 +28,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     
     //temp hard coded list
     //need to change this to be adative to user input
-    var cafeListFaves =  [
-        ("Cafe Solstice", "Seattle, WA", "Wifi, Bathroom, Hours 8am - 5pm"),
-        ("Cafe Alegro", "Seattle, WA", "Wifi, Bathroom, Hours 8am - 4pm"),
-        ("Sip House", "Seattle, WA", "Wifi, Bathroom, Hours 8am - 5pm")
-    ]
-    var shopNamesFaves = ["Cafe Solstice", "Cafe Alegro", "Sip House"]
-   
-    var filteredFaves = [(String, String, String)]()
+    var filteredFaves = [shopTableCell]()
     var searchActive : Bool = false
        
     func reloadData(){
@@ -43,18 +36,22 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favoriteShops.list.count
+        if (searchActive) {
+            return filteredFaves.count
+        } else {
+            return favoriteShops.list.count
+        }
     }
     func searchCafes(searchText: String){
         //clear previous filter results
         filteredFaves.removeAll()
         
         //filter the shop name based on the search text
-        let filteredNames = shopNamesFaves.filter {$0.localizedCaseInsensitiveContains(searchText as String)}
+        let filteredNames = favoriteShops.list.map({$0.shopName}).filter {$0.localizedCaseInsensitiveContains(searchText as String)}
         
         //add matching cafes' data to filteredFaves
-        for cafe in cafeListFaves{
-            if filteredNames.contains(cafe.0){
+        for cafe in favoriteShops.list {
+            if filteredNames.contains(cafe.shopName) {
                 filteredFaves.append(cafe)
             }
         }
@@ -65,7 +62,11 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     
     //formating the table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return favoriteShops.list[indexPath.row]
+        if (searchActive) {
+            return filteredFaves[indexPath.row]
+        } else {
+            return favoriteShops.list[indexPath.row]
+        }
     }
     
     //change view to the shop page
