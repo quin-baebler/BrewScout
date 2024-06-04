@@ -10,6 +10,8 @@ import MapKit
 import GooglePlaces
 import CoreLocation
 
+
+
 class shopTableCell : UITableViewCell {
     //cell components
     @IBOutlet weak var shopNameLabel: UILabel!
@@ -18,11 +20,16 @@ class shopTableCell : UITableViewCell {
     @IBOutlet weak var otherInfoLabel: UILabel!
     @IBOutlet weak var filledHeartButton: UIButton!
     var isLiked = false
+    var shopID = ""
     @IBAction func likeShop(_ sender: UIButton) {
         isLiked = !isLiked
         if (isLiked) {
+            favoriteShops.list.append(self)
+            print(favoriteShops.list.count)
             filledHeartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
+            favoriteShops.list.removeAll(where: {$0.shopID == shopID})
+            print(favoriteShops.list.count)
             filledHeartButton.setImage(UIImage(systemName: "heart"), for: .normal)
         }
     }
@@ -149,7 +156,14 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.shopNameLabel.text = place.name
         cell.shopLocationLabel.text = "Location"
         cell.otherInfoLabel.text = "Other Info"
-        cell.filledHeartButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        cell.shopID = place.place_id
+        if (favoriteShops.list.contains(where: {$0.shopID == cell.shopID})) {
+            cell.filledHeartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            cell.isLiked = true
+        } else {
+            cell.filledHeartButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+        cell.shopID = place.place_id
         
         if let photos = place.photos, let photoReference = photos.first?.photo_reference {
             fetchImage(for: photoReference) { image in

@@ -10,15 +10,6 @@ import FirebaseAuth
 import UIKit
 import GooglePlaces
 
-    class TableCell : UITableViewCell{
-        //cell components
-        @IBOutlet weak var shopImage: UIImageView!
-        @IBOutlet weak var shopNameLabel: UILabel!
-        @IBOutlet weak var shopLocationLabel: UILabel!
-        @IBOutlet weak var otherInfoLabel: UILabel!
-        @IBOutlet weak var filledHeartButton: UIButton!
-    }
-
 class FavoritesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     override func viewDidLoad() {
@@ -56,7 +47,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchActive ? filteredFaves.count: cafeListFaves.count
+        return favoriteShops.list.count
     }
     func searchCafes(searchText: String){
         //clear previous filter results
@@ -78,34 +69,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     
     //formating the table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "exampleFavCell", for: indexPath) as! TableCell
-        
-        let cafe = searchActive ? filteredFaves[indexPath.row] : cafeListFaves[indexPath.row]
-
-        cell.shopNameLabel.text = cafe.0
-        cell.shopLocationLabel.text = cafe.1
-        cell.otherInfoLabel.text = cafe.2
-        if liked == true {
-            cell.filledHeartButton.setImage(UIImage(named: "heart.fill"), for: .normal)
-        } else {
-            cell.filledHeartButton.setImage(UIImage(named: "heart"), for: .normal)
-        }
-
-        //add image
-        let imgName: String
-        switch cafe.0{
-        case "Cafe Solstice":
-            imgName = "Solstice"
-        case "Cafe Allegro":
-            imgName = "allegro"
-        case "Sip House":
-            imgName = "sip house"
-        default:
-            imgName = ""
-        }
-        cell.shopImage.image = UIImage(named: imgName)
-        
-        return cell
+        return favoriteShops.list[indexPath.row]
     }
     
    //the like button does not work
@@ -126,7 +90,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     
     //set size
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 190
+            return 210
         }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
