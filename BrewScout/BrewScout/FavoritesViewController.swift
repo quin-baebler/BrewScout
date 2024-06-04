@@ -17,6 +17,15 @@ import GooglePlaces
         @IBOutlet weak var shopLocationLabel: UILabel!
         @IBOutlet weak var otherInfoLabel: UILabel!
         @IBOutlet weak var filledHeartButton: UIButton!
+        var isLiked = true
+        @IBAction func likeShop(_ sender: UIButton) {
+            isLiked = !isLiked
+            if (isLiked) {
+                filledHeartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            } else {
+                filledHeartButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            }
+        }
     }
 
 class FavoritesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
@@ -26,7 +35,6 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.delegate = self
         searchBar.delegate = self
         super.viewDidLoad()
-//        liked = true
         // Do any additional setup after loading the view.
     }
 
@@ -47,10 +55,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
    
     var filteredFaves = [(String, String, String)]()
     var searchActive : Bool = false
-    //var filtered: String = ""
-   
-    var liked = true
-    
+       
     func reloadData(){
         tableView.reloadData()
     }
@@ -85,11 +90,6 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         cell.shopNameLabel.text = cafe.0
         cell.shopLocationLabel.text = cafe.1
         cell.otherInfoLabel.text = cafe.2
-        if liked == true {
-            cell.filledHeartButton.setImage(UIImage(named: "heart.fill"), for: .normal)
-        } else {
-            cell.filledHeartButton.setImage(UIImage(named: "heart"), for: .normal)
-        }
 
         //add image
         let imgName: String
@@ -106,16 +106,6 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         cell.shopImage.image = UIImage(named: imgName)
         
         return cell
-    }
-    
-   //the like button does not work
-    @IBAction func clickHeartButton(_ sender: UIButton) {
-        if liked == true{
-            liked = false
-        } else {
-            liked = true
-        }
-        reloadData()
     }
     
     //change view to the shop page
