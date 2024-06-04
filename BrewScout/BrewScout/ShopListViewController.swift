@@ -19,19 +19,20 @@ class shopTableCell : UITableViewCell {
     @IBOutlet weak var shopLocationLabel: UILabel!
     @IBOutlet weak var otherInfoLabel: UILabel!
     @IBOutlet weak var filledHeartButton: UIButton!
-    var isLiked = false
+    var isLiked = false {
+        didSet {
+            let imageName = isLiked ? "heart.fill" : "heart"
+            filledHeartButton.setImage(UIImage(systemName: imageName), for: .normal)
+        }
+    }
     var shopName = ""
     var shopID = ""
     @IBAction func likeShop(_ sender: UIButton) {
-        isLiked = !isLiked
-        if (isLiked) {
-            favoriteShops.list.append(self)
-            print(favoriteShops.list.count)
-            filledHeartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        isLiked.toggle()
+        if isLiked {
+            favoriteShops.likedShopIDs.insert(shopID)
         } else {
-            favoriteShops.list.removeAll(where: {$0.shopID == shopID})
-            print(favoriteShops.list.count)
-            filledHeartButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            favoriteShops.likedShopIDs.remove(shopID)
         }
     }
 }
@@ -54,6 +55,10 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -187,22 +192,14 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "shopCell", for: indexPath) as! shopTableCell
         let place = isFiltered ? filteredCafes[indexPath.row] : coffeeShops[indexPath.row]
-        //print(place)
+        print(place)
         cell.shopNameLabel.text = place.name
         cell.shopName = place.name
         cell.otherInfoLabel.text = "Other Info"
         cell.shopID = place.place_id
         
         // checks if shop is in favorites list
-        // if so, fill shop's favorite button
-        // leave empty if not
-        if (favoriteShops.list.contains(where: {$0.shopID == cell.shopID})) {
-            cell.filledHeartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            cell.isLiked = true
-        } else {
-            cell.filledHeartButton.setImage(UIImage(systemName: "heart"), for: .normal)
-        }
-        cell.shopID = place.place_id
+        cell.isLiked = favoriteShops.likedShopIDs.contains(cell.shopID)
         
         // get shop image
         if let photos = place.photos, let photoReference = photos.first?.photo_reference {
@@ -258,5 +255,5 @@ class ShopListViewController: UIViewController, UITableViewDataSource, UITableVi
                let placeID = sender as? String { // can you pass the placeID here so I can access it to display the details
                 placeDetailVC.placeID = placeID
             }
-        }
+    }
 }

@@ -19,7 +19,14 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+        if (!favoriteShops.likedShopIDs.isEmpty) {
+            print(favoriteShops.likedShopIDs)
+        }
+    }
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -36,37 +43,35 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (searchActive) {
-            return filteredFaves.count
-        } else {
-            return favoriteShops.list.count
-        }
+        return searchActive ? filteredFaves.count : favoriteShops.likedShopIDs.count
     }
-    func searchCafes(searchText: String){
-        //clear previous filter results
-        filteredFaves.removeAll()
-        
-        //filter the shop name based on the search text
-        let filteredNames = favoriteShops.list.map({$0.shopName}).filter {$0.localizedCaseInsensitiveContains(searchText as String)}
-        
-        //add matching cafes' data to filteredFaves
-        for cafe in favoriteShops.list {
-            if filteredNames.contains(cafe.shopName) {
-                filteredFaves.append(cafe)
-            }
+    
+    func searchCafes(searchText: String) {
+        filteredFaves = favoriteShops.likedShopIDs.filter { shopID in
+        if let shop = coffeeShops.first(where: { $0.place_id == shopID }) {
+            return shop.name.localizedCaseInsensitiveContains(searchText)
         }
-        
-        //set search actiity to true if there is search text
+            return false
+        }
         searchActive = searchText.count > 0
     }
     
     //formating the table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (searchActive) {
-            return filteredFaves[indexPath.row]
-        } else {
-            return favoriteShops.list[indexPath.row]
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "favCell", for: indexPath) as! shopTableCell
+        let favoriteShop = favoriteShops.list[indexPath.row]
+                
+        cell.shopNameLabel.text = favoriteShop.shopName
+        cell.shopID = favoriteShop.shopID
+        cell.isLiked = true
+        cell.filledHeartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                
+        // Set other properties as needed
+        cell.shopImage.image = favoriteShop.shopImage.image
+        cell.shopLocationLabel.text = favoriteShop.shopLocationLabel.text
+        cell.otherInfoLabel.text = favoriteShop.otherInfoLabel.text
+                
+        return cell
     }
     
     //change view to the shop page

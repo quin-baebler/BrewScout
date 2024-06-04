@@ -7,6 +7,13 @@
 
 import Foundation
 
-struct favoriteShops {
-    static var list = [shopTableCell]()
+import Foundation
+
+class FavoriteShops {
+    static let shared = FavoriteShops()
+    var likedShopIDs: Set<String> = []
+
+    private init() {}
 }
+
+let favoriteShops = FavoriteShops.shared
