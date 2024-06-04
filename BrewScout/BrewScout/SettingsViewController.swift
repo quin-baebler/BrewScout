@@ -36,7 +36,7 @@ class SettingsViewController: UIViewController {
        @IBAction func saveButton(_ sender: Any) {
            let radius = Double(radiusSlider.value)
            UserDefaults.standard.set(radius, forKey: "searchRadius")
-
+           
            let alert = UIAlertController(title: "Settings Saved", message: "Your search radius has been updated.", preferredStyle: .alert)
            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
                    self.navigationController?.popViewController(animated: true)
