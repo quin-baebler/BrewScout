@@ -31,9 +31,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func editProfile(_ sender: Any) {
-        
-    }
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -42,14 +39,14 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     //temp hard coded data
     //need to change this to be adative to user input
-    var profileData = ["Name", "userName", "email"]
+    var profileData = ["Bob", "coffeelover4", "user@test.com"]
     
     //temp hard coded list
     //need to change this to be adative to user input
     var reviewsList =  [
-        ("Cafe Solstice", "my rev"),
-        ("Cafe Alegro", "my rev"),
-        ("Sip House", "my rev")
+        ("Cafe Solstice", "The staff is nice, and it has good vibes!"),
+        ("Cafe Alegro", "good coffee, and a good place to study"),
+        ("Sip House", "the coffee is super sweet")
     ]
     
     @IBOutlet weak var tableView: UITableView!
@@ -71,7 +68,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     //set size
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 100
+            return 110
         }
     
     /*
@@ -84,53 +81,4 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     */
 
-}
-
-
-
-class EditProfileViewController: UIViewController{
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    @IBOutlet weak var cancelButton: UIButton!
-    
-    @IBOutlet weak var FinishSaveButton: UIButton!
-    
-    @IBOutlet weak var nameTextField: UITextField!
-    
-    @IBOutlet weak var usernameTextField: UITextField!
-    
-    @IBOutlet weak var emailTextFeild: UITextField!
-    
-    
-    var profileData = ["Name", "userName", "email"]
-
-    
-    @IBAction func changeName(_ sender: Any) {
-        profileData[0] = nameTextField.text ?? profileData[0]
-    }
-    
-    @IBAction func changeUsername(_ sender: Any) {
-        profileData[1] = usernameTextField.text ?? profileData[1]
-    }
-    
-    @IBAction func changeEmail(_ sender: Any) {
-        profileData[2] = emailTextFeild.text ?? profileData[2]
-    }
-    
-    
-    @IBAction func FinishSaveButtonClick(_ sender: Any) {
-        performSegue(withIdentifier: "saveEdits", sender: FinishSaveButton)
-        //send updated profile data back to the profile page
-        
-    }
-    
-    
-    @IBAction func cancelButtonClick(_ sender: Any) {
-        performSegue(withIdentifier: "cancelEdits", sender: cancelButton)
-
-    }
-    
 }
