@@ -359,7 +359,7 @@
                     <connections>
                         <outlet property="searchBar" destination="aYI-kP-Olx" id="Jca-Fn-ELL"/>
                         <outlet property="tableView" destination="8PQ-QD-cjK" id="VSu-ZI-4Bm"/>
-                        <segue destination="emp-oR-5dU" kind="showDetail" identifier="showFromFav" id="WUF-ze-TYH"/>
+                        <segue destination="emp-oR-5dU" kind="showDetail" identifier="showFromFavs" id="WUF-ze-TYH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fud-9e-3wW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -595,6 +595,13 @@
                                     <action selector="saveButton:" destination="4gz-nN-TTB" eventType="touchUpInside" id="Qyd-U6-GCm"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance in Meters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LIa-3D-Ldw">
+                                <rect key="frame" x="125" y="187" width="142" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NIF-aN-bGa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
