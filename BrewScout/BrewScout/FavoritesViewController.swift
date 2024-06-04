@@ -124,6 +124,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
     
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCafe = searchActive ? filteredFaves[indexPath.row] : FavoriteShops.shared.list[indexPath.row]
         let placeID = selectedCafe.place_id
