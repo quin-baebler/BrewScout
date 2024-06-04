@@ -25,6 +25,7 @@
 		34FB2AEF2BFD822200DDA310 /* BrewScoutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FB2AEE2BFD822200DDA310 /* BrewScoutUITests.swift */; };
 		34FB2AF12BFD822200DDA310 /* BrewScoutUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FB2AF02BFD822200DDA310 /* BrewScoutUITestsLaunchTests.swift */; };
 		88995CB72C0C416B00E74D73 /* ShopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88995CB62C0C416B00E74D73 /* ShopListViewController.swift */; };
+		9F06A4292C0E882B008C2055 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F06A4282C0E882B008C2055 /* SettingsViewController.swift */; };
 		9F1CDCD82C0E6ABF00999F02 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1CDCD72C0E6ABF00999F02 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		34FB2AEE2BFD822200DDA310 /* BrewScoutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewScoutUITests.swift; sourceTree = "<group>"; };
 		34FB2AF02BFD822200DDA310 /* BrewScoutUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewScoutUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		88995CB62C0C416B00E74D73 /* ShopListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListViewController.swift; sourceTree = "<group>"; };
+		9F06A4282C0E882B008C2055 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		9F1CDCD72C0E6ABF00999F02 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +137,7 @@
 				341F15F32C0948DC008F7781 /* PlaceDetailViewController.swift */,
 				2FB0F4EF2C0655DE00DCCD6B /* FavoritesViewController.swift */,
 				34FB2AD32BFD821E00DDA310 /* Main.storyboard */,
+				9F06A4282C0E882B008C2055 /* SettingsViewController.swift */,
 				88995CB62C0C416B00E74D73 /* ShopListViewController.swift */,
 				9F1CDCD72C0E6ABF00999F02 /* MapViewController.swift */,
 				34FB2AD62BFD822100DDA310 /* Assets.xcassets */,
@@ -305,6 +308,7 @@
 				341F15F22C094876008F7781 /* LoginViewController.swift in Sources */,
 				34FB2AD22BFD821E00DDA310 /* ViewController.swift in Sources */,
 				341F15F42C0948DC008F7781 /* PlaceDetailViewController.swift in Sources */,
+				9F06A4292C0E882B008C2055 /* SettingsViewController.swift in Sources */,
 				34FB2ACE2BFD821E00DDA310 /* AppDelegate.swift in Sources */,
 				9F1CDCD82C0E6ABF00999F02 /* MapViewController.swift in Sources */,
 				88995CB72C0C416B00E74D73 /* ShopListViewController.swift in Sources */,

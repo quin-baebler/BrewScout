@@ -17,9 +17,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     let locationManager = CLLocationManager()
     var coffeeShops: [Place] = []
     var apiKey: String = "AIzaSyDMfVpurbF4MJ2ZQnhbUPiU03KICxQ_uug"
+    var searchRadius: Double = 1000
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = "Map"
         
         mapView.delegate = self
         mapView.showsUserLocation = true
@@ -27,7 +30,33 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
+        searchRadius = UserDefaults.standard.double(forKey: "searchRadius")
+                if searchRadius == 0 {
+                    searchRadius = 1000
+                }
+
+                // Add settings button
+                let settingsButton = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(openSettings))
+                navigationItem.rightBarButtonItem = settingsButton
+            }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        searchRadius = UserDefaults.standard.double(forKey: "searchRadius")
+        
+        if let location = locationManager.location {
+            fetchNearbyCoffeeShops(location: location)
+        }
     }
+
+            @objc func openSettings() {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                if let settingsVC = storyboard.instantiateViewController(withIdentifier: "SettingsViewController") as? SettingsViewController {
+                    navigationController?.pushViewController(settingsVC, animated: true)
+                }
+            }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             if let location = locations.first {
@@ -40,7 +69,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
 
         func fetchNearbyCoffeeShops(location: CLLocation) {
-            let urlString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(location.coordinate.latitude),\(location.coordinate.longitude)&radius=1000&type=cafe&key=\(apiKey)"
+            let urlString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(location.coordinate.latitude),\(location.coordinate.longitude)&radius=\(searchRadius)&type=cafe&key=\(apiKey)"
+            
+            print(urlString)
 
             guard let url = URL(string: urlString) else {
                 return
